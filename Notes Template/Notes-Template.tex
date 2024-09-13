@@ -1,0 +1,560 @@
+\documentclass[12pt,x11names]{article}
+
+%%%%%%%%%%%% CORE PACKAGES %%%%%%%%%%%%%%%%%%
+%%%% (that any document should use) %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[x11names]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[a4paper, total={7in, 9.5in}]{geometry}
+\usepackage{setspace}
+\usepackage{import}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{lipsum}
+
+%% Bibliography %%
+\usepackage[style=alphabetic, backend=bibtex8,
+            autocite=footnote, notetype=endonly, labeldateparts]{biblatex}
+\addbibresource{references.bib}
+
+%% Graphics Packages %%
+\usepackage{tikz-cd}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[many]{tcolorbox}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{pagecolor}
+\usepackage{etoolbox}
+\usepackage{listings}
+
+%%%%%%%%%%%%%%% HEADERS/FOOTERS %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{Notes Template}
+\rhead{aaryan11@stanford.edu}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%% CUSTOM COUNTER(S)  %%%%%%%%%%%%%%%%%%%%
+\newcounter{exercises}
+\counterwithin{exercises}{subsection}
+\renewcommand{\theexercises}{\thesubsection.\Alph{exercises}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%% MATH PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm, amssymb, amsmath, centernot, graphicx}
+\usepackage{thmtools}
+\usepackage{stmaryrd}
+\usepackage[shortlabels]{enumitem}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%% FONT STUFF %%%%%%%%%%%%%%%%%%%%
+
+\usepackage{calligra, mathrsfs}
+\usepackage{lmodern}
+\usepackage[T2A,T1]{fontenc}
+
+% Other Font Options
+% \usepackage{mathpazo} % The Rising Sea
+% \usepackage{euler}
+
+% \usepackage{euler} % Vaughan's notes
+% \usepackage{eulervm}
+
+%\usepackage{kpfonts}  
+
+% \usepackage{libertine} 
+% \usepackage{libertinust1math}
+
+\usepackage{amsfonts} % Stacks project math font
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% CUSTOM COLORS %%%%%%%%%%%%%%%%%%%%
+\definecolor{shadecolor}{gray}{0.95}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%% CUSTOMIZING TITLES %%%%%%%%%%%%%%%
+
+\usepackage[titles]{tocloft}
+
+\renewcommand{\cftsecfont}{\color{blue}}
+\renewcommand{\cftsecpagefont}{}
+\renewcommand{\cftsubsecfont}{\color{blue}}
+\setlength\cftparskip{-10pt}
+\setlength\cftbeforesubsecskip{10pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% CUSTOM COMMANDS %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% STYLIZED LETTERS %%%%%%%%%%%%%%%%
+%% BOLD LETTERS %%
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\zero}{\mathbf{0}}
+\newcommand{\one}{\mathbb{1}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\ff}{\mathbb{F}}
+\newcommand{\rp}{\mathbb{RP}}
+\newcommand{\cp}{\mathbb{CP}}
+\renewcommand\tt{\mathbb{T}}
+\newcommand{\bp}{\mathbb{P}}
+\newcommand{\boldp}{\mathbb{P}}
+\renewcommand\aa{\mathbb{A}}
+\newcommand\ii{\mathbb{I}}
+\newcommand{\ee}{\mathbb{E}}
+% MATHFRAK LETTERS %
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\PP}{\mathfrak{P}}
+\newcommand{\frakq}{\mathfrak{q}}
+\newcommand{\frakQ}{\mathfrak{Q}}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\MM}{\mathfrak{M}}
+\newcommand{\frako}{\mathfrak{o}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakb}{\mathfrak{b}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\frakd}{\mathfrak{d}}
+\newcommand{\frakD}{\mathfrak{D}}
+\newcommand{\frakn}{\mathfrak{n}}
+\newcommand{\frakf}{\mathfrak{f}}
+\newcommand{\frakg}{\mathfrak{g}}
+\newcommand{\jj}{\mathfrak{j}}
+%% MATHCAL LETTERS %%
+\newcommand{\calc}{\mathcal{C}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calf}{\mathcal{F}}
+\newcommand{\calg}{\mathcal{G}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cale}{\mathcal{E}}
+\newcommand{\calo}{\mathcal{O}}
+\newcommand{\cali}{\mathcal{I}}
+\newcommand{\calj}{\mathcal{J}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calx}{\mathcal{X}}
+\newcommand{\caly}{\mathcal{Y}}
+\newcommand{\calz}{\mathcal{Z}}
+\newcommand{\calm}{\mathcal{M}}
+\newcommand{\caln}{\mathcal{N}}
+\newcommand{\cals}{\mathcal{S}}
+%% FANCY LETTERS %%
+\newcommand{\fanc}{\mathscr{C}}
+\newcommand{\fanb}{\mathscr{B}}
+\newcommand{\fane}{\mathscr{E}}
+\newcommand{\fanf}{\mathscr{F}}
+\newcommand{\fanp}{\mathscr{P}}
+\newcommand{\fanl}{\mathscr{L}}
+\newcommand{\fana}{\mathscr{A}}
+\newcommand{\fanx}{\mathscr{X}}
+\newcommand{\fany}{\mathscr{Y}}
+\newcommand{\fanz}{\mathscr{Z}}
+\newcommand{\fang}{\mathscr{G}}
+\newcommand{\fanh}{\mathscr{H}}
+\newcommand{\fani}{\mathscr{I}}
+\newcommand{\fanm}{\mathscr{M}}
+\newcommand{\fann}{\mathscr{N}}
+\newcommand{\fans}{\mathscr{S}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% OPERATIONS, CONNECTORS & SEPARATORS %%%%%%%%%%%%
+%%% Module Things %%
+\newcommand{\tensor}{\otimes}
+\newcommand{\bigtensor}{\bigotimes}
+\newcommand{\dsum}{\oplus}
+\newcommand{\bigdsum}{\bigoplus}
+%% Maps %%
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\bij}{\overset{\sim}{\to}}
+\newcommand{\dlim}{\varinjlim}
+\newcommand{\inlim}{\varprojlim}  
+%% Topology Things %%
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\csum}{\#}
+\DeclareMathOperator{\topint}{int}
+\newcommand{\topwedge}{\vee}
+\newcommand{\bigtopwedge}{\bigvee}
+%% Left-Righting Things %%
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\brangle}[1]{\left\langle #1 \right\rangle}
+\renewcommand{\brack}[1]{\left(   #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\lVert #1 \right \rVert}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\sqbrack}[1]{\left[ #1 \right]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%% CUSTOM SYMBOLS FOR FUNZIES %%%%%%%%%%%%%
+\newcommand{\fish}{ %% For R.V. w/ Poisson dist %%
+  \mathchoice
+    {\mathrel{\ooalign{$\alpha$\cr\hidewidth \kern -0.13em $\cdot$\hidewidth}}}% \displaystyle
+    {\mathrel{\ooalign{$\alpha$\cr\hidewidth \kern -0.13em$\cdot$\hidewidth}}}% \textstyle
+    {\mathrel{\ooalign{$\scriptstyle\alpha$\cr\hidewidth\kern -0.13em $\scriptstyle\cdot$\hidewidth}}}% \scriptstyle
+    {\mathrel{\ooalign{$\scriptscriptstyle\alpha$\cr\hidewidth \kern -0.13em $\scriptscriptstyle\cdot$\hidewidth}}}% \scriptscriptstyle
+}
+
+\newcommand{\notimplies}{
+\mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% MISC OPS&COMMANDS %%%%%%%%%%%%%%%%%
+%% Categorical tingz %%
+\DeclareMathOperator{\Set}{\underline{\mathsf{Set}}}
+\DeclareMathOperator{\Ab}{\underline{\mathsf{Ab}}}
+\DeclareMathOperator{\Grp}{\underline{\mathsf{Grp}}}
+\DeclareMathOperator{\Top}{\underline{\mathsf{Top}}}
+\DeclareMathOperator{\Diff}{\underline{\mathsf{Diff}}}
+\DeclareMathOperator{\Rmod}{\underline{\mathsf{R-Mod}}}
+\DeclareMathOperator{\Zmod}{\underline{Z-\mathsf{Mod}}}
+\DeclareMathOperator{\Amod}{\underline{\mathsf{A-Mod}}}
+\DeclareMathOperator{\Vect}{\underline{\mathsf{Vect}}}
+\DeclareMathOperator{\Ring}{\underline{\mathsf{Ring}}}
+\DeclareMathOperator{\CRing}{\underline{\mathsf{CRing}}}
+\DeclareMathOperator{\Meas}{\underline{\mathsf{Meas}}}
+\DeclareMathOperator{\Met}{\underline{\mathsf{Met}}}
+\DeclareMathOperator{\Cat}{\underline{\mathsf{Cat}}}
+\DeclareMathOperator{\Man}{\underline{\mathsf{Man}}}
+\DeclareMathOperator{\Sh}{\underline{\mathsf{Sh}}}
+\DeclareMathOperator{\Presh}{\underline{\mathsf{PreSh}}}
+\DeclareMathOperator{\PreSh}{\underline{\mathsf{PreSh}}}
+\DeclareMathOperator{\Open}{\underline{\mathsf{Open}}}
+\DeclareMathOperator{\Et}{\underline{\mathsf{Et}}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\op}{\mathsf{op}}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\coim}{coim}
+%% Algebra Tingz %%
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\sep}{sep}
+\newcommand{\ideal}{\trianglelefteq}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\nil}{nil}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\stab}{Stab}
+\newcommand{\acts}{\curverightarrow}
+\newcommand{\actson}{\curverightarrow}
+\newcommand{\action}{\curverightarrow}
+%% ANT Tings %%
+\newcommand{\zzz}[1]{\zz/#1 \zz}
+\DeclareMathOperator{\pic}{Pic}
+\DeclareMathOperator{\cl}{Cl}
+\DeclareMathOperator{\bigdiv}{Div}
+\DeclareMathOperator{\smalldiv}{div}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\disc}{disc}
+%% Function Tingz %%
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\image}{Im}
+\newcommand{\im}[1]{\mathfrak{Im} \left( #1 \right)}
+\newcommand{\re}[1]{\mathfrak{Re} \left( #1 \right)}
+\newcommand{\inv}[1]{#1^{-1}}
+%% Alg Geo Tingz %%
+\newcommand{\homsheaf}{\mathcal{H}\text{om}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\mspec}{Max-Spec}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\ass}{Ass}
+\DeclareMathOperator{\weakass}{WeakAss}
+\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\et}{et}
+%% Matrix Tingz %%
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\mat}{Mat}
+\DeclareMathOperator{\mot}{Mot}
+\DeclareMathOperator{\rep}{Rep}
+\DeclareMathOperator{\res}{Res}
+%% Analysis Tingz %%
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\curl}{curl}
+\newcommand{\dA}{\, \mathrm{d}A}
+\newcommand{\dq}{\, \mathrm{d}q}
+\newcommand{\dr}{\, \mathrm{d}r}
+\newcommand{\ds}{\, \mathrm{d}s}
+\newcommand{\dt}{\, \mathrm{d}t}
+\newcommand{\du}{\, \mathrm{d}u}
+\newcommand{\dv}{\, \mathrm{d}v}
+\newcommand{\dV}{\, \mathrm{d}V}
+\newcommand{\dx}{\, \mathrm{d}x}
+\newcommand{\dy}{\, \mathrm{d}y}
+\newcommand{\dz}{\, \mathrm{d}z}
+\newcommand{\dtheta}{\, \mathrm{d}\theta}
+\newcommand{\domega}{\, \mathrm{d}\omega}
+\newcommand{\del}{\partial}
+\DeclareMathOperator{\vol}{Vol}
+%% Topology Tingz %%
+\DeclareMathOperator{\rel}{rel}
+\newcommand{\lift}[1]{\widetilde{#1}}
+%% Logic Tingz %%
+\newcommand{\semantics}[1]{[\![\textnormal{$ #1 $\/}]\!]}
+\newcommand{\entails}{\Vdash}
+%% Prob Tingz %%
+\newcommand{\given}{\mid}
+\DeclareMathOperator{\opt}{opt}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\bin}{Bin}
+\DeclareMathOperator{\geo}{Geo}
+\DeclareMathOperator{\poi}{Poi}
+\DeclareMathOperator{\ber}{Ber}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% ENVIRONMENTS AND PROOFS %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% RMK ENV %%
+\declaretheoremstyle[
+headfont= \color{DodgerBlue3!80!black},
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\color{black},
+postheadspace=0.5em,
+spaceabove=0pt,
+mdframed={
+  skipabove=5pt,
+  skipbelow=5pt,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  leftline=false,
+  roundcorner=0pt,
+  innerleftmargin=0pt,
+  innerrightmargin=10pt}
+]{sidebarstyle}
+
+%%%%%%%% DEFN ENV %%%%%%%%%%%%%
+\declaretheoremstyle[
+headfont=\color{Red2!90!black},
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\color{black},
+postheadspace=0.5em,
+spaceabove=0pt,
+mdframed={
+  skipabove=10pt,
+  skipbelow=10pt,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  linecolor=Red3,
+  linewidth=3pt,
+  roundcorner=0pt,
+  backgroundcolor=LavenderBlush1,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt}
+]{defstyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% EXAMPLE ENV %%
+\declaretheoremstyle[
+headfont= \color{Orchid4!90!black},
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\color{black},
+postheadspace=0.5em,
+spaceabove=0pt,
+mdframed={
+  skipabove=10pt,
+  skipbelow=10pt,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  linecolor=Magenta4,
+  linewidth=3pt,
+  roundcorner=0pt,
+  backgroundcolor=LavenderBlush1,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt}
+]{examplestyle}
+
+
+%% THM ENV %%
+\declaretheoremstyle[
+headfont=\color{orange!80!black},
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\color{black},
+postheadspace=0.5em,
+spaceabove=0pt,
+mdframed={
+  skipabove=10pt,
+  skipbelow=10pt,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  linecolor=gray,
+  linewidth=3pt,
+  roundcorner=0pt,
+  backgroundcolor={shadecolor},
+  innerleftmargin=10pt,
+  innerrightmargin=10pt}
+]{resultstyle}
+
+
+%% EXERCISE ENV %%
+\declaretheoremstyle[
+headfont= \color{black!90!black},
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\color{black},
+postheadspace=0.5em,
+spaceabove=0pt,
+mdframed={
+  skipabove=5pt,
+  skipbelow=5pt,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  linecolor=Cyan4,
+  backgroundcolor=Azure2,
+  linewidth=3pt,
+  roundcorner=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt}
+]{exercisestyle}
+
+%%% EXCLAMATION ENV %%%%%
+\declaretheoremstyle[
+headfont= \color{Red2!90!black},
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont\color{black},
+postheadspace=0.5em,
+spaceabove=0pt,
+mdframed={
+  skipabove=5pt,
+  skipbelow=5pt,
+  topline=false,
+  rightline=false,
+  bottomline=false,
+  leftline=false,
+  roundcorner=0pt,
+  innerleftmargin=0pt,
+  innerrightmargin=10pt}
+]{exclamationstyle}
+
+%%%%%%%%%%%%%%% RESULTS %%%%%%%%%%%%%%%
+\declaretheorem[name=\textsc{Theorem},style=resultstyle,within=subsection]{thm}
+\declaretheorem[name=\textsc{Theorem},style=resultstyle, sibling=thm]{theorem}
+\declaretheorem[name=\textsc{Lemma},style=resultstyle,sibling=thm]{lemma}
+\declaretheorem[name=\textsc{Proposition},style=resultstyle,sibling=thm]{proposition}
+\declaretheorem[name=\textsc{Proposition},style=resultstyle,sibling=thm]{prop}
+\declaretheorem[name=\textsc{Corollary},style=resultstyle,sibling=thm]{corollary}
+\declaretheorem[name=\textsc{Corollary},style=resultstyle,sibling=thm]{cor}
+\declaretheorem[name=\textsc{Conjecture},style=resultstyle, numbered=no]{conj}
+%%%%%%%%%%%%  DEFINITIONS & EXAMPLES  %%%%%%%%%%%%%%%%%
+\declaretheorem[name=\textsc{Definition},style=defstyle,sibling=thm]{defn}
+\declaretheorem[name=\textsc{Example},style=examplestyle,sibling=thm]{example}
+\declaretheorem[name=\textsc{Non-Example},style=examplestyle,sibling=thm]{nonexample}
+%%%%%%%%%%%%% EXERCISES %%%%%%%%%%%%%%%%%%%%%%%%
+\declaretheorem[name=\textsc{Exercise},style=exercisestyle, sibling=exercises]{exercise}
+%%%%%%%%%%%%%% EXCLAMATIONS %%%%%%%%%%%%%%%%%%%%%%
+\declaretheorem[name=\textsc{Sanity Check},style=exclamationstyle, numbered=no]{sanitycheck}
+\declaretheorem[name=\textsc{Warning},style=exclamationstyle, numbered=no]{warning}
+%%%%%%%%%%%%%% SIDEBARS & TANGENTS %%%%%%%%%%%%%%
+\declaretheorem[name=\textsc{Remark},style=sidebarstyle, numbered=no]{remark}
+\declaretheorem[name=\textsc{Question},style=sidebarstyle, numbered=no]{question}
+\declaretheorem[name=\textsc{Observation},style=sidebarstyle, numbered=no]{obs}
+\declaretheorem[name=\textsc{Observation},style=sidebarstyle, numbered=no]{observation}
+
+
+
+\usepackage{titlesec}
+\titleformat{\section}[display]{\large}{\bfseries Section \thesection}{0.1em}{\bfseries \LARGE \color{black}}[]
+\titleformat{\subsection}[block]{\large \centering}{\S \thesubsection}{1em}{}[]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{Math Notes Template}
+
+\author{Aaryan Sukhadia}
+\date{First created Summer 2023}
+\onehalfspacing
+
+\maketitle
+\tableofcontents
+
+\section{This is a section}
+
+\subsection{This is a subsection}
+
+In terms of formatting, there will be four main types of colored boxes in this template.
+\begin{defn} 
+    A bright, almost-blaring red-backgrounded, red-striped box to house a vital Definition.
+\end{defn}
+\begin{example}
+    An equally-importantly-red-backgrounded but slightly less blaring purple-striped box to house an important or prototypical Example of a concept. You can cite it, e.g if it came from \cite{tate1997fourier}.
+\end{example}
+\begin{theorem}
+    A neutrally-toned gray-shaded box to house a Result, whether that be a theorem (such as this particular box), a proposition, etc.
+\end{theorem}
+\begin{proof}
+    You can prove theorems as so.
+\end{proof}
+\begin{exercise}
+    A cool green-colored box that houses an Exercise that (at least in the author's experience) helps grasp or hone a core tool/technique. Note: Exercises are meant to be reasonably doable by a reader who's paying attention, rather than a way for the author to offload busywork to a reader.
+\end{exercise}
+
+\begin{observation}
+As you might have deduced, Definitions, Examples and Results follow a [Subsection.Number] numbering scheme (except for corollaries, whose counters have the relevant result as their parent), all using a common counter, and Exercises follow a [Subsection.Letter] numbering scheme (I'm of the opinion that if one ever requires more than 26 exercises per subsection then either too much work is being put on the reader or the subsection is too long and should be split up).
+\end{observation}
+
+\begin{remark}
+As is standard in mathematical writing I've also created environments for asides such as Remarks and Observations. Less-standard and more exclamatory variants of asides I've used here are Sanity Checks (statements that should be intuitively obvious and verifiable in some epsilon time to an attentive reader) and Warnings (cautionary interventions about potentially confusing or unintuitive notation, terminology or concepts).
+\end{remark}
+
+\begin{warning}
+    This template is designed with exposition in mind. The point of putting environments in boxes and colors is to make them stand out amongst other text and give a reader visual cues to grab onto when skimming a text or looking for a reference. If your notes are primarily a list of results and definitions with not a lot of proofs and expositions in between, you may want to consider using an alternate template. When everything is highlighted, nothing is.
+\end{warning}
+
+\printbibliography
+
+ 
+\end{document}
