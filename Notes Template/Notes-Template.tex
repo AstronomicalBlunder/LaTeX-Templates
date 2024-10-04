@@ -1,4 +1,4 @@
-\documentclass[12pt,x11names]{article}
+ \documentclass[12pt,x11names]{article}
 
 %%%%%%%%%%%% CORE PACKAGES %%%%%%%%%%%%%%%%%%
 %%%% (that any document should use) %%%%%%%%%
@@ -297,17 +297,27 @@
 \DeclareMathOperator{\weakass}{WeakAss}
 \DeclareMathOperator{\proj}{Proj}
 \DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\grass}{Gr}
+\DeclareMathOperator{\gr}{Gr}
+\DeclareMathOperator{\Gr}{Gr}
 %% Matrix Tingz %%
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\gl}{GL}
 \DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\psl}{PSL}
+\DeclareMathOperator{\pgl}{PGL}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\sl}{SL}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\mat}{Mat}
-\DeclareMathOperator{\mot}{Mot}
+\DeclareMathOperator{\su}{SU}
+\DeclareMathOperator{\mat}{\mathsf{Mat}}
+\DeclareMathOperator{\mot}{\mathsf{Mot}}
+\DeclareMathOperator{\graph}{\mathsf{Graph}}
 \DeclareMathOperator{\rep}{Rep}
 \DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sym}{Sym}
 %% Analysis Tingz %%
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\curl}{curl}
@@ -408,7 +418,6 @@ mdframed={
   linecolor=Magenta4,
   linewidth=3pt,
   roundcorner=0pt,
-  backgroundcolor=LavenderBlush1,
   innerleftmargin=10pt,
   innerrightmargin=10pt}
 ]{examplestyle}
@@ -499,6 +508,7 @@ mdframed={
 \declaretheorem[name=\textsc{Question},style=sidebarstyle, numbered=no]{question}
 \declaretheorem[name=\textsc{Observation},style=sidebarstyle, numbered=no]{obs}
 \declaretheorem[name=\textsc{Observation},style=sidebarstyle, numbered=no]{observation}
+\declaretheorem[name=\textsc{(Unnecessary) Aside},style=sidebarstyle, numbered=no]{aside}
 
 
 

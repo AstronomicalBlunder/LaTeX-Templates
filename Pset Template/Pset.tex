@@ -1,0 +1,390 @@
+\documentclass[10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%  PACKAGES %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[backend=biber, style = numeric, citestyle=alphabetic]{biblatex}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{setspace}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+\usepackage{tikz-cd}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% CUSTOM COMMANDS %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% STYLIZED LETTERS %%%%%%%%%%%%%%%%
+%% BOLD LETTERS %%
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\zero}{\mathbf{0}}
+\newcommand{\one}{\mathbb{1}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\ff}{\mathbb{F}}
+\newcommand{\rp}{\mathbb{RP}}
+\newcommand{\cp}{\mathbb{CP}}
+\renewcommand\tt{\mathbb{T}}
+\newcommand{\bp}{\mathbb{P}}
+\newcommand{\boldp}{\mathbb{P}}
+\renewcommand\aa{\mathbb{A}}
+\newcommand\ii{\mathbb{I}}
+\newcommand{\ee}{\mathbb{E}}
+% MATHFRAK LETTERS %
+\newcommand{\pp}{\mathfrak{p}}
+\newcommand{\PP}{\mathfrak{P}}
+\newcommand{\frakq}{\mathfrak{q}}
+\newcommand{\frakQ}{\mathfrak{Q}}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\MM}{\mathfrak{M}}
+\newcommand{\frako}{\mathfrak{o}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\frakb}{\mathfrak{b}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\frakd}{\mathfrak{d}}
+\newcommand{\frakD}{\mathfrak{D}}
+\newcommand{\frakn}{\mathfrak{n}}
+\newcommand{\frakf}{\mathfrak{f}}
+\newcommand{\frakg}{\mathfrak{g}}
+\newcommand{\jj}{\mathfrak{j}}
+%% MATHCAL LETTERS %%
+\newcommand{\calc}{\mathcal{C}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calf}{\mathcal{F}}
+\newcommand{\calg}{\mathcal{G}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cale}{\mathcal{E}}
+\newcommand{\calo}{\mathcal{O}}
+\newcommand{\cali}{\mathcal{I}}
+\newcommand{\calj}{\mathcal{J}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calx}{\mathcal{X}}
+\newcommand{\caly}{\mathcal{Y}}
+\newcommand{\calz}{\mathcal{Z}}
+\newcommand{\calm}{\mathcal{M}}
+\newcommand{\caln}{\mathcal{N}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\calq}{\mathcal{Q}}
+\newcommand{\calp}{\mathcal{P}}
+%% FANCY LETTERS %%
+\newcommand{\fanc}{\mathscr{C}}
+\newcommand{\fanb}{\mathscr{B}}
+\newcommand{\fane}{\mathscr{E}}
+\newcommand{\fanf}{\mathscr{F}}
+\newcommand{\fanp}{\mathscr{P}}
+\newcommand{\fanl}{\mathscr{L}}
+\newcommand{\fana}{\mathscr{A}}
+\newcommand{\fanx}{\mathscr{X}}
+\newcommand{\fany}{\mathscr{Y}}
+\newcommand{\fanz}{\mathscr{Z}}
+\newcommand{\fang}{\mathscr{G}}
+\newcommand{\fanh}{\mathscr{H}}
+\newcommand{\fani}{\mathscr{I}}
+\newcommand{\fanm}{\mathscr{M}}
+\newcommand{\fann}{\mathscr{N}}
+\newcommand{\fans}{\mathscr{S}}
+\newcommand{\fanq}{\mathscr{Q}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% OPERATIONS, CONNECTORS & SEPARATORS %%%%%%%%%%%%
+%%% Module Things %%
+\newcommand{\tensor}{\otimes}
+\newcommand{\bigtensor}{\bigotimes}
+\newcommand{\dsum}{\oplus}
+\newcommand{\bigdsum}{\bigoplus}
+%% Maps %%
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\bij}{\overset{\sim}{\to}}
+\newcommand{\dlim}{\varinjlim}
+\newcommand{\inlim}{\varprojlim}  
+%% Topology Things %%
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\csum}{\#}
+\DeclareMathOperator{\topint}{int}
+\newcommand{\topwedge}{\vee}
+\newcommand{\bigtopwedge}{\bigvee}
+%% Left-Righting Things %%
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\brangle}[1]{\left\langle #1 \right\rangle}
+\renewcommand{\brack}[1]{\left(   #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\lVert #1 \right \rVert}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\sqbrack}[1]{\left[ #1 \right]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%% CUSTOM SYMBOLS FOR FUNZIES %%%%%%%%%%%%%
+\newcommand{\fish}{ %% For R.V. w/ Poisson dist %%
+  \mathchoice
+    {\mathrel{\ooalign{$\alpha$\cr\hidewidth \kern -0.13em $\cdot$\hidewidth}}}% \displaystyle
+    {\mathrel{\ooalign{$\alpha$\cr\hidewidth \kern -0.13em$\cdot$\hidewidth}}}% \textstyle
+    {\mathrel{\ooalign{$\scriptstyle\alpha$\cr\hidewidth\kern -0.13em $\scriptstyle\cdot$\hidewidth}}}% \scriptstyle
+    {\mathrel{\ooalign{$\scriptscriptstyle\alpha$\cr\hidewidth \kern -0.13em $\scriptscriptstyle\cdot$\hidewidth}}}% \scriptscriptstyle
+}
+
+\newcommand{\notimplies}{
+\mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% MISC OPS&COMMANDS %%%%%%%%%%%%%%%%%
+%% Categorical tingz %%
+\DeclareMathOperator{\Set}{\underline{\mathsf{Set}}}
+\DeclareMathOperator{\Ab}{\underline{\mathsf{Ab}}}
+\DeclareMathOperator{\Grp}{\underline{\mathsf{Grp}}}
+\DeclareMathOperator{\Top}{\underline{\mathsf{Top}}}
+\DeclareMathOperator{\Diff}{\underline{\mathsf{Diff}}}
+\DeclareMathOperator{\Rmod}{\underline{\mathsf{R-Mod}}}
+\DeclareMathOperator{\Zmod}{\underline{Z-\mathsf{Mod}}}
+\DeclareMathOperator{\Amod}{\underline{\mathsf{A-Mod}}}
+\DeclareMathOperator{\Vect}{\underline{\mathsf{Vect}}}
+\DeclareMathOperator{\Ring}{\underline{\mathsf{Ring}}}
+\DeclareMathOperator{\CRing}{\underline{\mathsf{CRing}}}
+\DeclareMathOperator{\Meas}{\underline{\mathsf{Meas}}}
+\DeclareMathOperator{\Met}{\underline{\mathsf{Met}}}
+\DeclareMathOperator{\Cat}{\underline{\mathsf{Cat}}}
+\DeclareMathOperator{\Man}{\underline{\mathsf{Man}}}
+\DeclareMathOperator{\Sh}{\underline{\mathsf{Sh}}}
+\DeclareMathOperator{\Presh}{\underline{\mathsf{PreSh}}}
+\DeclareMathOperator{\PreSh}{\underline{\mathsf{PreSh}}}
+\DeclareMathOperator{\Open}{\underline{\mathsf{Open}}}
+\DeclareMathOperator{\Et}{\underline{\mathsf{Et}}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\op}{\mathsf{op}}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\coim}{coim}
+%% Algebra Tingz %%
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\sep}{sep}
+\newcommand{\ideal}{\trianglelefteq}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\nil}{nil}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\orb}{Orb}
+\DeclareMathOperator{\stab}{Stab}
+\newcommand{\acts}{\curverightarrow}
+\newcommand{\actson}{\curverightarrow}
+\newcommand{\action}{\curverightarrow}
+%% ANT Tings %%
+\newcommand{\zzz}[1]{\zz/#1 \zz}
+\DeclareMathOperator{\pic}{Pic}
+\DeclareMathOperator{\cl}{Cl}
+\DeclareMathOperator{\bigdiv}{Div}
+\DeclareMathOperator{\smalldiv}{div}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\disc}{disc}
+%% Function Tingz %%
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\image}{Im}
+\newcommand{\im}[1]{\mathfrak{Im} \left( #1 \right)}
+\newcommand{\re}[1]{\mathfrak{Re} \left( #1 \right)}
+\newcommand{\inv}[1]{#1^{-1}}
+%% Alg Geo Tingz %%
+\newcommand{\homsheaf}{\mathcal{H}\text{om}}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\mspec}{Max-Spec}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\ass}{Ass}
+\DeclareMathOperator{\weakass}{WeakAss}
+\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\et}{et}
+%% Matrix Tingz %%
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\mat}{Mat}
+\DeclareMathOperator{\mot}{Mot}
+\DeclareMathOperator{\rep}{Rep}
+\DeclareMathOperator{\res}{Res}
+%% Analysis Tingz %%
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\curl}{curl}
+\newcommand{\dA}{\, \mathrm{d}A}
+\newcommand{\dq}{\, \mathrm{d}q}
+\newcommand{\dr}{\, \mathrm{d}r}
+\newcommand{\ds}{\, \mathrm{d}s}
+\newcommand{\dt}{\, \mathrm{d}t}
+\newcommand{\du}{\, \mathrm{d}u}
+\newcommand{\dv}{\, \mathrm{d}v}
+\newcommand{\dV}{\, \mathrm{d}V}
+\newcommand{\dx}{\, \mathrm{d}x}
+\newcommand{\dy}{\, \mathrm{d}y}
+\newcommand{\dz}{\, \mathrm{d}z}
+\newcommand{\dtheta}{\, \mathrm{d}\theta}
+\newcommand{\domega}{\, \mathrm{d}\omega}
+\newcommand{\del}{\partial}
+\DeclareMathOperator{\vol}{Vol}
+%% Topology Tingz %%
+\DeclareMathOperator{\rel}{rel}
+\newcommand{\lift}[1]{\widetilde{#1}}
+%% Logic Tingz %%
+\newcommand{\semantics}[1]{[\![\textnormal{$ #1 $\/}]\!]}
+\newcommand{\entails}{\Vdash}
+%% Prob Tingz %%
+\newcommand{\given}{\mid}
+\DeclareMathOperator{\opt}{opt}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\bin}{Bin}
+\DeclareMathOperator{\geo}{Geo}
+\DeclareMathOperator{\poi}{Poi}
+\DeclareMathOperator{\ber}{Ber}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%  STRUCTURE AND LAYOUT %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% SPACING AND INDENTATION %%
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+\onehalfspacing
+\parindent=0pt
+
+%% CUSTOM COLORS %%
+\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+\definecolor{shadecolor}{gray}{0.95}
+
+
+%% THEOREM ENVIRONMENTS
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem*{fact}{Fact}
+\newtheorem*{obs}{Observation}
+\newtheorem*{claim}{Claim}
+\newtheorem*{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{question}{Q}
+
+\tcolorboxenvironment{theorem}{
+  enhanced,
+  borderline={0.8pt}{0pt}{blue},
+  borderline={0.4pt}{2pt}{blue},
+  boxrule=0.4pt,
+  colback=white,
+  coltitle=black,
+}
+
+\tcolorboxenvironment{lemma}{
+  enhanced,
+  borderline={0.8pt}{0pt}{violet},
+  borderline={0.4pt}{2pt}{violet},
+  boxrule=0.4pt,
+  colback=white,
+  coltitle=black,
+}
+
+\tcolorboxenvironment{definition}{
+  enhanced,
+  borderline={0.8pt}{0pt}{red},
+  borderline={0.4pt}{2pt}{red},
+  boxrule=0.4pt,
+  colback=white,
+  coltitle=black,
+}
+
+\tcolorboxenvironment{question}{%
+  colback=white, colframe=MidnightBlue!45,
+  coltitle=black, fonttitle=\bfseries,
+  sharp corners,
+  width=(\linewidth-30pt)}
+
+\newenvironment{solution}{
+    \begin{shaded}
+        \textit{Solution:}
+        }
+    {\end{shaded}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Pset No. Here}
+\author{Template by Aaryan Sukhadia}
+\date{First Created Fall 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{question}
+Question here
+\end{question}
+\begin{solution}
+    This is a remarkable solution worthy of full points. Consider
+\end{solution}
+
+
+\end{document}

@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\RequirePackage[T1]{fontenc} % One should always have this
+\RequirePackage{amsmath, amssymb} % Standard ams tools
+\RequirePackage{color, hyperref} % For links
+\RequirePackage{ragged2e, fullpage} % Page formatting
+\RequirePackage{calc} % Various useful packages
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage[x11names]{xcolor}
+\RequirePackage{changepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% GLOBAL SETUPS  %%%%%%%%%%
+
+\def\hrulefill{\leavevmode\leaders\hrule height 2pt\hfill\kern\z@} %% Horizontal Line fills the page with thick bar
+
+% Hyperlink Setup
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=DodgerBlue3,urlcolor=DodgerBlue3,
+            anchorcolor=DodgerBlue3,citecolor=DodgerBlue3}
+
+% Page Formatting
+\pagestyle{empty}
+\raggedright
+
+%%%%%%%%%%%%% Shortcuts for Section-Creation %%%%%%%%%%%%%%%%%
+\newcommand{\contact}[2]{\begin{center}{\LARGE \scshape {#1}}\\\vspace*{6pt}{\large #2}\end{center}} % Header to the document
+
+\newcommand{\header}[1]{\textcolor{SteelBlue4}{\rule{80pt}{2pt}} \hrulefill \vspace{2mm} \begin{adjustwidth}{0pt}{425pt + 0.5in}{ \textsc{\Large #1}}  \end{adjustwidth}} % Header to a section
+%% For first entry of each section, add a \vspace{-k x 15 pt}, where k is the number of lines taken up by the header title %%
+
+
+%%%%%%%%%%%%%%% EXPERIENCES AND PROJECTS %%%%%%%%%%%%%
+\newcommand{\supervisedexperience}[4]{\begin{adjustwidth}{95pt}{0pt}\textbf{#1}\\ \textit{#2} \hfill{\textit{#3}}\\ \vspace{1mm} \justifying{\noindent #4\\} \end{adjustwidth}}
+
+\newcommand{\timedexperience}[3]{\begin{adjustwidth}{95pt}{0pt}\textbf{#1}\hfill{\textit{#2}}\\ \vspace{1mm} \justifying{\noindent #3} \\ \end{adjustwidth}} % Timed Experience
+
+\newcommand{\education}[3]{\begin{adjustwidth}{95pt}{0pt}\textbf{#1}\hfill{\textit{#2}}\\\vspace*{4pt}#3\vspace*{6pt}\end{adjustwidth}} % Education
+
+\newcommand{\degree}[3]{\text{#1}\hfill{#2}\\{#3}\\\setlength{\leftskip}{0mm}} % Degree
+
+\newcommand{\skill}[2]{\begin{adjustwidth}{95pt}{0pt}\textbf{#1}\\ \vspace{1mm} #2\\\vspace*{6pt} \end{adjustwidth}}
+
+\newcommand{\talk}[2]{\begin{adjustwidth}{95pt}{0pt}\textbf{#1} \hfill{\textit{#2}}\\\vspace*{2pt} \end{adjustwidth}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
